@@ -1,0 +1,83 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Playground mode: the canvas takes pointer events (the scrim never does). */
+.playground {
+  pointer-events: auto;
+}
+
+.playground .scrim {
+  opacity: 0.35;
+}
+
+.root canvas {
+  position: absolute !important;
+  inset: 0;
+  animation: fade-in 1.2s ease;
+}
+
+/* CSS-only fallback: glow gradient + a perspective "terrain" grid. */
+.fallback {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 80% 50% at 50% 100%,
+      color-mix(in srgb, var(--neon-magenta) 18%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 60% 40% at 50% 0%,
+      color-mix(in srgb, var(--neon-cyan) 10%, transparent),
+      transparent 70%
+    ),
+    var(--color-bg);
+}
+
+.grid {
+  position: absolute;
+  left: -50%;
+  right: -50%;
+  bottom: 0;
+  height: 75%;
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--neon-cyan) 30%, transparent) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--neon-cyan) 30%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+  transform: perspective(500px) rotateX(58deg);
+  transform-origin: bottom;
+  mask-image: linear-gradient(to top, black 0%, transparent 70%);
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 70%);
+}
+
+/* Darkening layer between the background and content: keeps body text at a readable contrast. */
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 70% 60% at 30% 45%,
+      color-mix(in srgb, var(--color-bg) 55%, transparent),
+      transparent 80%
+    ),
+    color-mix(in srgb, var(--color-bg) calc(var(--scene-dim, 0.45) * 100%), transparent);
+  pointer-events: none;
+  transition:
+    background 0.5s ease,
+    opacity 0.35s ease;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

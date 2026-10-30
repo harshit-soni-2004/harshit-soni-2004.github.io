@@ -1,0 +1,45 @@
+.boot {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem clamp(1rem, 8vw, 6rem);
+  background: var(--color-bg);
+  font-size: var(--fs-sm);
+  transition: opacity 0.28s ease;
+}
+
+.leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.log {
+  max-width: 720px;
+}
+
+.line {
+  white-space: pre-wrap;
+  color: var(--color-text);
+}
+
+.ok {
+  color: var(--neon-green);
+}
+
+.info {
+  color: var(--neon-cyan);
+}
+
+.hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-text-dim);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

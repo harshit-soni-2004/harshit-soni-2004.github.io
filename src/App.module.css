@@ -1,0 +1,86 @@
+/* Fixed single-viewport shell: command bar / stage / status bar. No page-level scroll. */
+.app {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
+  height: 100vh;
+  height: 100dvh;
+}
+
+.stage {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  /* Horizontal swipes switch panels; keep the browser from treating them as back/forward. */
+  touch-action: pan-y pinch-zoom;
+  overscroll-behavior-x: none;
+  transition: opacity 0.35s ease;
+}
+
+/*
+ * Playground mode: panels fade to ~8% and stop taking pointer events, so the 3D canvas behind
+ * the shell receives them. The command bar and status bar stay usable.
+ */
+.app[data-playground] {
+  pointer-events: none;
+}
+
+.app[data-playground] > header,
+.app[data-playground] > footer {
+  pointer-events: auto;
+}
+
+.app[data-playground] .stage {
+  opacity: 0.08;
+}
+
+:global(html.reduced-motion) .stage {
+  transition: none;
+}
+
+.stage:focus {
+  outline: none;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.6rem, 2vw, 1.25rem);
+  animation: panel-in 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Short glitchy slide: offset + RGB-split flash, then settle. */
+@keyframes panel-in {
+  0% {
+    opacity: 0;
+    transform: translateX(calc(var(--dir, 1) * 48px)) skewX(calc(var(--dir, 1) * -4deg));
+    filter: drop-shadow(-4px 0 0 var(--neon-magenta)) drop-shadow(4px 0 0 var(--neon-cyan));
+  }
+  35% {
+    opacity: 0.85;
+    clip-path: inset(10% 0 30% 0);
+  }
+  55% {
+    clip-path: inset(0 0 0 0);
+    filter: drop-shadow(-2px 0 0 var(--neon-magenta)) drop-shadow(2px 0 0 var(--neon-cyan));
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+:global(html.reduced-motion) .panel {
+  animation: panel-fade 120ms linear;
+}
+
+@keyframes panel-fade {
+  from {
+    opacity: 0;
+  }
+}

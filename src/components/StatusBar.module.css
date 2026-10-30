@@ -1,0 +1,71 @@
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 0.75rem;
+  height: 30px;
+  background: color-mix(in srgb, var(--neon-green) 12%, var(--color-bg));
+  border-top: 1px solid color-mix(in srgb, var(--neon-green) 35%, transparent);
+  font-size: var(--fs-xs);
+  color: var(--color-text);
+  white-space: nowrap;
+  z-index: 40;
+}
+
+.session {
+  color: var(--color-bg);
+  background: var(--neon-green);
+  padding: 0 0.45rem;
+  font-weight: 700;
+}
+
+.windows {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.windows::-webkit-scrollbar {
+  display: none;
+}
+
+.windows ul {
+  display: flex;
+  gap: 0.15rem;
+  list-style: none;
+}
+
+.windows a {
+  display: block;
+  padding: 0.1rem 0.45rem;
+  color: var(--color-text-muted);
+  border-radius: 3px;
+}
+
+.windows a:hover {
+  color: var(--neon-cyan);
+  text-decoration: none;
+}
+
+.windows a.active {
+  color: var(--color-bg);
+  background: var(--neon-cyan);
+  font-weight: 700;
+}
+
+.hints,
+.clock {
+  color: var(--color-text-muted);
+}
+
+.clock {
+  color: var(--neon-green);
+}
+
+@media (max-width: 700px) {
+  .hints,
+  .session {
+    display: none;
+  }
+}

@@ -1,0 +1,161 @@
+.kicks {
+  position: fixed;
+  right: 0.75rem;
+  bottom: calc(30px + 0.6rem);
+  z-index: 45;
+  padding: 0.2rem 0.6rem;
+  font-size: var(--fs-xs);
+  color: var(--neon-magenta);
+  background: var(--panel-bg);
+  border: 1px solid color-mix(in srgb, var(--neon-magenta) 45%, transparent);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: calc(30px + 0.75rem);
+  z-index: 46;
+  transform: translateX(-50%);
+  width: min(96vw, 860px);
+  display: grid;
+  gap: 0.5rem;
+  justify-items: center;
+  pointer-events: auto;
+  animation: dock-in 0.3s ease;
+}
+
+.hint {
+  margin: 0;
+  padding: 0.3rem 0.8rem;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  background: var(--panel-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  text-align: center;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.4rem;
+  background: var(--panel-bg);
+  backdrop-filter: blur(var(--panel-blur));
+  border: 1px solid color-mix(in srgb, var(--neon-cyan) 35%, transparent);
+  border-radius: 6px;
+}
+
+.btn {
+  font: inherit;
+  font-size: var(--fs-xs);
+  padding: 0.3rem 0.6rem;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+.btn[aria-pressed='true'] {
+  color: var(--color-bg);
+  background: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+.btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.exit {
+  color: var(--neon-magenta);
+}
+
+.sep {
+  width: 1px;
+  align-self: stretch;
+  background: var(--color-border);
+}
+
+.card {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 60;
+  transform: translate(-50%, -50%);
+  width: min(92vw, 420px);
+  background: var(--panel-bg);
+  backdrop-filter: blur(var(--panel-blur));
+  border: 1px solid color-mix(in srgb, var(--neon-magenta) 50%, transparent);
+  border-radius: 6px;
+  box-shadow: 0 0 24px color-mix(in srgb, var(--neon-magenta) 25%, transparent);
+  pointer-events: auto;
+  animation: dock-in 0.25s ease;
+}
+
+.cardBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.dollar {
+  color: var(--neon-green);
+}
+
+.close {
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 0.1rem 0.4rem;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus-visible {
+  color: var(--neon-magenta);
+  border-color: var(--neon-magenta);
+}
+
+.cardLabel {
+  margin: 0.75rem 0.9rem 0.25rem;
+  color: var(--neon-cyan);
+  font-weight: 700;
+}
+
+.cardText {
+  margin: 0 0.9rem 0.9rem;
+  font-size: var(--fs-sm);
+}
+
+@keyframes dock-in {
+  from {
+    opacity: 0;
+    translate: 0 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dock,
+  .card {
+    animation: none;
+  }
+}

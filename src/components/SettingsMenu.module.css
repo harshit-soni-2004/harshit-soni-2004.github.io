@@ -1,0 +1,114 @@
+.wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.trigger {
+  height: 2rem;
+  min-width: 2.5rem;
+  padding: 0 0.6rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  color: var(--neon-magenta);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+
+.trigger:hover,
+.trigger[aria-expanded='true'] {
+  border-color: var(--neon-magenta);
+  box-shadow: var(--glow-magenta);
+}
+
+.panel {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  z-index: 60;
+  width: 230px;
+  padding: 0.75rem;
+  background: color-mix(in srgb, var(--color-bg) 96%, transparent);
+}
+
+.heading {
+  margin: 0.25rem 0 0.4rem;
+  color: var(--color-text-dim);
+  font-size: var(--fs-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.3rem 0;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+}
+
+.toggle input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.switch {
+  position: relative;
+  width: 30px;
+  height: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface-2);
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+
+.switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-text-muted);
+  transition: transform var(--transition);
+}
+
+.toggle input:checked + .switch {
+  background: color-mix(in srgb, var(--neon-green) 25%, transparent);
+  border-color: var(--neon-green);
+}
+
+.toggle input:checked + .switch::after {
+  transform: translateX(14px);
+  background: var(--neon-green);
+}
+
+.toggle input:focus-visible + .switch {
+  outline: 2px solid var(--neon-green);
+  outline-offset: 2px;
+}
+
+.palettes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.palette {
+  padding: 0.2rem 0.55rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+.palette[aria-pressed='true'] {
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}

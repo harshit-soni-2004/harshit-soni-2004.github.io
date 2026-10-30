@@ -1,0 +1,107 @@
+.window {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--panel-bg);
+  backdrop-filter: blur(var(--panel-blur));
+  -webkit-backdrop-filter: blur(var(--panel-blur));
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 0.85rem;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.dots {
+  display: inline-flex;
+  gap: 0.35rem;
+}
+
+.dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--neon-error);
+}
+
+.dots i:nth-child(2) {
+  background: var(--neon-warning);
+}
+
+.dots i:nth-child(3) {
+  background: var(--neon-green);
+}
+
+.path {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dollar {
+  color: var(--neon-green);
+}
+
+.tab {
+  color: var(--neon-cyan);
+}
+
+/* Long panels scroll inside the window, never the page. */
+.body {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: clamp(1rem, 3vw, 1.75rem);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  font-size: var(--fs-xl);
+  color: var(--color-text);
+}
+
+.title:focus {
+  outline: none;
+}
+
+.title:focus-visible {
+  outline: 2px solid var(--neon-green);
+  outline-offset: 4px;
+}
+
+.title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  margin-left: 0.5rem;
+  background: linear-gradient(90deg, var(--color-border), transparent);
+  align-self: center;
+}
+
+.index {
+  color: var(--neon-cyan);
+  font-size: var(--fs-md);
+  font-weight: 500;
+}

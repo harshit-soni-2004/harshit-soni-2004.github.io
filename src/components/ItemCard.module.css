@@ -1,0 +1,97 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.15rem;
+  height: 100%;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--neon-cyan);
+  box-shadow: var(--glow-cyan);
+  transform: translateY(-2px);
+}
+
+.featured {
+  border-color: color-mix(in srgb, var(--neon-magenta) 45%, var(--color-border));
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: var(--fs-xs);
+  color: var(--color-text-muted);
+}
+
+.badge {
+  color: var(--neon-magenta);
+}
+
+.title {
+  font-size: var(--fs-md);
+  line-height: 1.35;
+}
+
+.link {
+  color: var(--color-text);
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+/* Stretch the link over the whole card. */
+.link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+}
+
+.link:focus-visible {
+  outline: none;
+}
+
+.link:focus-visible::after {
+  outline: 2px solid var(--neon-green);
+  outline-offset: 3px;
+}
+
+.summary {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  flex: 1;
+}
+
+.tags,
+.tech {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  font-size: var(--fs-xs);
+  color: var(--neon-green);
+}
+
+.open {
+  align-self: flex-end;
+  font-size: var(--fs-xs);
+  color: var(--neon-cyan);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.card:hover .open,
+.card:focus-within .open {
+  opacity: 1;
+}
