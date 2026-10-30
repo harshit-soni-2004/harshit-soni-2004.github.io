@@ -1,30 +1,30 @@
 /*
- * Theme colours â€” change the palette here, in one place.
+ * Theme colours — change the palette here, in one place.
  * The 3D scene reads these variables at runtime, so it follows automatically.
- * Alternative palettes for the `theme <name>` command live in src/config/theme.ts.
+ * Alternative palettes for the 	heme <name> command live in src/config/theme.ts.
  */
 :root {
-  /* Base */
-  --color-bg: #05070a;
-  --color-surface: #0b1016;
-  --color-surface-2: #111821;
-  --color-border: #1c2a36;
+  /* Base - Synthwave palette default */
+  --color-bg: #0a0612;
+  --color-surface: #140d24;
+  --color-surface-2: #1e1338;
+  --color-border: #2d1a45;
 
-  /* Text â€” body copy uses high-contrast neutrals; neon is for accents only. */
-  --color-text: #d7e3ee;
-  --color-text-muted: #8a9bab;
-  /* â‰¥4.5:1 on --color-bg and on --panel-bg (WCAG AA for small text). */
-  --color-text-dim: #75879a;
+  /* Text — body copy uses high-contrast neutrals; neon is for accents only. */
+  --color-text: #f0e6f5;
+  --color-text-muted: #a694b8;
+  /* >=4.5:1 on --color-bg and on --panel-bg (WCAG AA for small text). */
+  --color-text-dim: #826e95;
 
   /* Glass panels placed behind every text block. */
-  --panel-bg: rgba(7, 10, 15, 0.82);
+  --panel-bg: rgba(14, 8, 26, 0.85);
   --panel-blur: 10px;
   --measure: 70ch;
 
-  /* Neon accents */
-  --neon-cyan: #00f0ff;
+  /* Neon accents - Synthwave (amber orange / fuchsia magenta / golden yellow) */
+  --neon-cyan: #ff9e00;
   --neon-magenta: #ff2bd6;
-  --neon-green: #39ff14;
+  --neon-green: #ffe066;
   --neon-warning: #ffcc00;
   --neon-error: #ff4d6d;
 

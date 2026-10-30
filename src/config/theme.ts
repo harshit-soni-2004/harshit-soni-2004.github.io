@@ -17,26 +17,44 @@ export type ColorVar =
   | '--neon-magenta'
   | '--neon-green';
 
-export const DEFAULT_PALETTE = 'cyberpunk';
+export const DEFAULT_PALETTE = 'synthwave';
 
 export const palettes: Record<string, Partial<Record<ColorVar, string>>> = {
-  /** Uses the values from variables.css as-is. */
-  cyberpunk: {},
-  matrix: {
-    '--neon-cyan': '#39ff14',
-    '--neon-magenta': '#00c853',
-    '--neon-green': '#b6ff9e',
-  },
   synthwave: {
     '--neon-cyan': '#ff9e00',
     '--neon-magenta': '#ff2bd6',
     '--neon-green': '#ffe066',
     '--color-bg': '#0a0612',
+    '--color-surface': '#140d24',
+    '--color-surface-2': '#1e1338',
+    '--color-border': '#2d1a45',
+  },
+  cyberpunk: {
+    '--neon-cyan': '#00f0ff',
+    '--neon-magenta': '#ff2bd6',
+    '--neon-green': '#39ff14',
+    '--color-bg': '#05070a',
+    '--color-surface': '#0b1016',
+    '--color-surface-2': '#111821',
+    '--color-border': '#1c2a36',
+  },
+  matrix: {
+    '--neon-cyan': '#39ff14',
+    '--neon-magenta': '#00c853',
+    '--neon-green': '#b6ff9e',
+    '--color-bg': '#050a06',
+    '--color-surface': '#0a140c',
+    '--color-surface-2': '#0f1f12',
+    '--color-border': '#16331b',
   },
   ice: {
     '--neon-cyan': '#7df9ff',
     '--neon-magenta': '#8a7dff',
     '--neon-green': '#c4f1ff',
+    '--color-bg': '#060a12',
+    '--color-surface': '#0c121e',
+    '--color-surface-2': '#121a2a',
+    '--color-border': '#1c2b42',
   },
 };
 
@@ -287,3 +305,4 @@ export function applyPalette(name: string): void {
     root.style.setProperty(k, v),
   );
 }
+

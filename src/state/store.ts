@@ -141,7 +141,7 @@ export const useStore = create<UIState>()(
     }),
     {
       name: 'hs-portfolio-ui',
-      version: 1,
+      version: 2,
       partialize: (s) => ({ effects: s.effects, palette: s.palette, pointerMode: s.pointerMode }),
       merge: (persisted, current) => {
         const p = (persisted ?? {}) as Partial<
@@ -222,3 +222,4 @@ export function stepSection(delta: number): void {
   const i = SECTION_IDS.indexOf(currentSection());
   navigateTo(SECTION_IDS[(i + delta + n) % n] as SectionId);
 }
+

@@ -1,9 +1,4 @@
-import { profile } from './profile';
 import type { SpaceObjectEntry } from './types';
-
-const footballBlurb =
-  profile.interests?.find((i) => i.toLowerCase().startsWith('football')) ??
-  'Off the keyboard I play football.';
 
 /**
  * Interactive objects in the 3D background. Add an entry to add an object; `type` picks the model
@@ -45,7 +40,8 @@ export const spaceObjects: SpaceObjectEntry[] = [
     start: [0.62, -0.55, 9],
     driftSpeed: 1.2,
     tooltipTitle: 'off-screen.md',
-    tooltipText: footballBlurb,
+    tooltipText:
+      'When I’m not at a keyboard, I’m on a pitch. I play for the DJ Sanghvi college team and in the MFA second division, and grew up playing inter-school tournaments. Football taught me the same things good engineering teams run on: communication, positioning and covering for each other. Click the ball to take a shot.',
     enabled: true,
   },
   {
