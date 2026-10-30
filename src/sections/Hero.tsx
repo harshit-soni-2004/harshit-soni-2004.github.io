@@ -25,6 +25,9 @@ export function Hero({ reducedMotion }: { reducedMotion: boolean }) {
           <a className="btn" href="#/projects">
             ./view-projects
           </a>
+          <a className="btn" href="#/lab">
+            ./view-research-projects
+          </a>
           <a className="btn btn--magenta" href={asset(profile.resumePath)} download>
             ↓ download-resume
           </a>

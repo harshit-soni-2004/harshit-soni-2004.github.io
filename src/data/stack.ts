@@ -35,6 +35,7 @@ export const stackLayers: StackLayer[] = [
       'Transformer',
       'LoRA',
       'RAG',
+      'FAISS',
       'OpenCV',
       'Scikit-learn',
       'GPT-4',
