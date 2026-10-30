@@ -54,7 +54,7 @@ const vertexShader = /* glsl */ `
       if (i >= uTrailCount) break;
       vec4 s = uTrail[i];
       float age = uClock - s.z;
-      if (s.z < 0.0 || age > uDecay) continue;
+      if (s.z < 0.0 || age < 0.0 || age > uDecay) continue;
       float f = 1.0 - age / uDecay;
       f = f * f * (3.0 - 2.0 * f);
       vec2 d = p - s.xy;
@@ -67,7 +67,7 @@ const vertexShader = /* glsl */ `
     for (int i = 0; i < WAVES; i++) {
       vec3 w = uWaves[i];
       float age = uClock - w.z;
-      if (w.z < 0.0 || age > uWaveLife) continue;
+      if (w.z < 0.0 || age < 0.0 || age > uWaveLife) continue;
       float ring = (length(p - w.xy) - age * uWaveSpeed) / uWaveWidth;
       float fade = 1.0 - age / uWaveLife;
       lift += exp(-ring * ring) * fade * fade * uWaveAmp / max(uLiftAmp, 0.05);
@@ -181,6 +181,9 @@ export function Terrain({ segments, colors, boost, animate, interactive }: Props
       scratch: new Vector2(),
       hit: new Vector3(),
       target: new Vector3(),
+      // R3F resets clock.elapsedTime to 0 whenever the frameloop changes (tab hidden/shown),
+      // which would leave trail/wave birth times in the future; keep a monotonic clock instead.
+      clock: 0,
       trailIndex: 0,
       trailCount: 0,
       waveIndex: 0,
@@ -219,8 +222,9 @@ export function Terrain({ segments, colors, boost, animate, interactive }: Props
     return Math.abs(out.x) < SIZE[0] / 2 && Math.abs(out.y) < SIZE[1] / 2;
   };
 
-  useFrame(({ camera, clock }, delta) => {
+  useFrame(({ camera }, delta) => {
     const dt = Math.min(delta, 0.1);
+    tracker.clock += dt;
     const tint = colors.tints[activeSection()];
     if (animate) {
       const t = 1 - Math.pow(0.05, dt);
@@ -237,7 +241,7 @@ export function Terrain({ segments, colors, boost, animate, interactive }: Props
     if (!interactive) return;
     const f = pointerField;
     const cfg = f.config;
-    const now = clock.elapsedTime;
+    const now = tracker.clock;
     uniforms.uClock.value = now;
     uniforms.uLiftAmp.value = cfg.amplitude * f.damping;
     uniforms.uRadius.value = cfg.radius;

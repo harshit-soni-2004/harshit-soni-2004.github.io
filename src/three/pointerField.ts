@@ -24,21 +24,23 @@ export const pointerField = {
   config: pointerPresets.calm as PointerInteraction,
 };
 
-const state = { targetX: 0, targetY: 0, lastX: NaN, lastY: NaN, lastMove: -Infinity };
+/** `clock` is monotonic: R3F resets clock.elapsedTime when the frameloop changes. */
+const state = { targetX: 0, targetY: 0, lastX: NaN, lastY: NaN, lastMove: -Infinity, clock: 0 };
 
 /** Per-frame factor `f` (defined at 60fps) converted to this frame's delta. */
 const perFrame = (f: number, dt: number) => Math.pow(f, dt * 60);
 
 /** Updates `pointerField` once per frame. Mount it first inside the Canvas. */
 export function PointerFieldDriver({ allowed }: { allowed: boolean }) {
-  useFrame(({ clock }, delta) => {
+  useFrame((_, delta) => {
     const dt = Math.min(delta, 0.1);
+    state.clock += dt;
     const mode = useStore.getState().pointerMode;
     const cfg = mode === 'off' ? pointerPresets.calm : pointerPresets[mode];
     const f = pointerField;
     f.config = cfg;
     f.active = allowed && mode !== 'off' && cfg.enabled;
-    const now = clock.elapsedTime;
+    const now = state.clock;
 
     if (f.active && motion.mouseInside) {
       // Dead zone: ignore sub-pixel jitter and tiny movements.
