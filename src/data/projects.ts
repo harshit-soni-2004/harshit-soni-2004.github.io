@@ -103,7 +103,7 @@ export const projects: Project[] = [
     github: 'https://github.com/harshit-soni-2004/invoice-financing-platform',
     image: 'projects/invoice-financing-home.jpg',
     imageAlt:
-      'Invoice Financing home page: "Turn unpaid invoices into working capital" hero with sign-up and sign-in buttons, and a four-step how-it-works strip — submit an invoice, list it for financing, compare and accept offers, disburse and repay.',
+      'Invoice Financing seller dashboard: greeting for mintu, quick actions for invoices and notifications, and potential buyers directory with credit ratings and payment metrics.',
     featured: true,
     date: '2026-10',
     context: 'Personal',
