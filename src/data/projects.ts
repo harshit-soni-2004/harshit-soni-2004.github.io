@@ -99,7 +99,11 @@ export const projects: Project[] = [
       'Docker Compose',
       'GitHub Actions',
     ],
+    demo: 'https://hire-opinion-russell-behalf.trycloudflare.com/',
     github: 'https://github.com/harshit-soni-2004/invoice-financing-platform',
+    image: 'projects/invoice-financing-home.jpg',
+    imageAlt:
+      'Invoice Financing home page: "Turn unpaid invoices into working capital" hero with sign-up and sign-in buttons, and a four-step how-it-works strip — submit an invoice, list it for financing, compare and accept offers, disburse and repay.',
     featured: true,
     date: '2026-10',
     context: 'Personal',
