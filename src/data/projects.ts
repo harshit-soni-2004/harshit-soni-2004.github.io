@@ -99,7 +99,7 @@ export const projects: Project[] = [
       'Docker Compose',
       'GitHub Actions',
     ],
-    demo: 'https://hire-opinion-russell-behalf.trycloudflare.com/',
+    demo: 'https://dictionaries-amber-pays-enzyme.trycloudflare.com/',
     github: 'https://github.com/harshit-soni-2004/invoice-financing-platform',
     image: 'projects/invoice-financing-home.jpg',
     imageAlt:
