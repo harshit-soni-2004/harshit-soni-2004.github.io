@@ -101,9 +101,9 @@ export const projects: Project[] = [
     ],
     demo: 'https://dictionaries-amber-pays-enzyme.trycloudflare.com/',
     github: 'https://github.com/harshit-soni-2004/invoice-financing-platform',
-    image: 'projects/invoice-financing-home.jpg',
+    image: 'projects/invoice-financing-seller.jpg',
     imageAlt:
-      'Invoice Financing seller dashboard: greeting for mintu, quick actions for invoices and notifications, and potential buyers directory with credit ratings and payment metrics.',
+      'Invoice Financing seller dashboard: greeting for Harshit Soni, quick actions for invoices and notifications, and potential buyers directory with credit ratings and payment metrics.',
     featured: true,
     date: '2026-10',
     context: 'Personal',
