@@ -9,6 +9,54 @@ import type { Project } from './types';
  */
 export const projects: Project[] = [
   {
+    id: 'resumegap',
+    title: 'ResumeGap — AI Resume & ATS Gap Copilot',
+    summary:
+      'AI resume and ATS gap copilot that scores resumes deterministically and rewrites bullets in Google XYZ format.',
+    description:
+      '0-to-1 AI Resume and ATS Gap Copilot built for off-campus engineering grads. Pairs a deterministic TypeScript audit engine (400+ skill keywords, metric regexes, seniority and section checks) with Gemini 2.5 Flash to generate priority-tagged missing keywords and Google XYZ bullet rewrites with [X%] placeholders to prevent metric hallucination.',
+    highlights: [
+      'Two-stage hybrid pipeline: sub-30ms deterministic ATS audit (keyword overlap 50%, quantified impact 25%, seniority 15%, completeness 10%) plus Gemini 2.5 Flash structured JSON rewrites.',
+      'Enforces a zero-hallucination guardrail by injecting [X%] placeholders wherever original bullets lack hard metrics.',
+      'Interactive Accept/Reject/Copy diff cards for Google XYZ bullet rewrites and priority-ranked (HIGH/MEDIUM/LOW) missing keyword chips.',
+      'Zero-signup PDF upload via unpdf with no resume persistence, Upstash Redis rate limiting, and a protected /admin PM analytics dashboard tracking bullet edit acceptance rate.',
+    ],
+    tags: ['SDE', 'Full Stack', 'AI'],
+    tech: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Gemini API', 'Supabase', 'Upstash Redis'],
+    demo: 'https://resumegap-npxlhydwy-iharshsoni-gmailcoms-projects.vercel.app/',
+    github: 'https://github.com/harshit-soni-2004/resumegap',
+    image: 'projects/resumegap.jpg',
+    imageAlt:
+      'ResumeGap ATS Audit view showing a 76 out of 100 ATS score gauge and four weighted evaluation pillars: Keyword Overlap, Quantified Impact Ratio, Seniority & Role Match, and Section Completeness.',
+    featured: true,
+    date: '2026-11',
+    context: 'Personal',
+  },
+  {
+    id: 'concave-survey-system',
+    title: 'Concave Insights — Custom Survey System',
+    summary:
+      'Tag-driven market research survey platform that parses plain .txt questionnaires into live, quota-enforced studies.',
+    description:
+      'Resilient survey intelligence engine for 15-day consumer research cycles. Researchers upload plain .txt questionnaires in a domain-specific tag format; the platform validates syntax and semantics with line-level accuracy, freezes immutable versions on approval, runs mobile-first respondent sessions with autosave, and exports unified CSV/Excel datasets.',
+    highlights: [
+      'Line-aware questionnaire parser and validator supporting 13 question types, nested quotas, and bilingual (Hindi/English) tags.',
+      'Logic engine with show-if (AND/OR precedence), skip-to, piping, options-from, balanced concept rotation, and per-respondent matrix row shuffling.',
+      'Multi-reason screener chaining, atomic quota concurrency locking, and runtime speeder and straight-liner quality flags.',
+      'Portfolio dashboard with live study metrics, drop-off funnel analytics, and standardized CSV/Excel (openpyxl) exports.',
+    ],
+    tags: ['SDE', 'Full Stack'],
+    tech: ['Angular', 'TypeScript', 'FastAPI', 'Python', 'PostgreSQL', 'Docker'],
+    demo: 'https://concave-survey-system.vercel.app',
+    github: 'https://github.com/harshit-soni-2004/concave-survey-system',
+    image: 'projects/concave-survey.jpg',
+    imageAlt:
+      'ConcaveInsights Portfolio Dashboard showing live studies, total completes, in-progress sessions, completes-per-day chart, and studies-by-status donut chart.',
+    featured: true,
+    date: '2026-11',
+    context: 'Personal',
+  },
+  {
     id: 'ami-patching-tool',
     title: 'Automated AMI Patching Tool',
     summary:
